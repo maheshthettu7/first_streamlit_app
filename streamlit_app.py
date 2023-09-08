@@ -1,4 +1,7 @@
 import streamlit
+import pandas 
+import requests
+import urllib.error import URLError
 import snowflake.connector 
 streamlit.title("My Mom's New Healthy Dinner")
 
@@ -11,7 +14,6 @@ streamlit.text('🥑🍞 Avocado Toast')
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 # data importing
-import pandas
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 #reseting index
 my_fruit_list.set_index('Fruit',inplace=True)
@@ -26,7 +28,7 @@ streamlit.header("Fruityvice Fruit Advice!")
 fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
 streamlit.write('The user entered ', fruit_choice)
 #request module to connect the web pages 
-import requests
+
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
 # streamlit.text(fruityvice_response)
 # streamlit.text(fruityvice_response.json())
